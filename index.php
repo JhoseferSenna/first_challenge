@@ -3,12 +3,12 @@ require_once('route.php');
 
 function home()
 {
-    include("paginas/index.php");
+    include("View/index.php");
 }
 
 function criarProduto()
 {
-    echo 'This is about us page. About Us template in HTML.';
+    include("View/produto/criar.html");
 }
 
 function listarProduto()
