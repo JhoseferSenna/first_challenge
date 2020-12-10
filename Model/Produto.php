@@ -123,5 +123,15 @@ class Produto
 
   public function Delete()
   {
+    try {
+      include('../Database.php');
+      $sql = "DELETE FROM product WHERE id = ?";
+      $stmtDelete = $conn->prepare($sql);
+      $stmtDelete->bindParam(1, $this->id);
+      $dados = $stmtDelete->execute();
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
   }
 }
