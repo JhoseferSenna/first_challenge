@@ -104,6 +104,21 @@ class Produto
 
   public function Update()
   {
+    try {
+      include('../Database.php');
+      $queryUpdate = "UPDATE product SET status = ?, category_id = ?, name = ?, price = ?, image = ? WHERE id =?";
+      $stmtUpdate = $conn->prepare($queryUpdate);
+      $stmtUpdate->bindParam(1, $this->status);
+      $stmtUpdate->bindParam(2, $this->categoryId);
+      $stmtUpdate->bindParam(3, $this->name);
+      $stmtUpdate->bindParam(4, $this->price);
+      $stmtUpdate->bindParam(5, $this->image);
+      $stmtUpdate->bindParam(6, $this->id);
+      $dados = $stmtUpdate->execute();
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
   }
 
   public function Delete()
