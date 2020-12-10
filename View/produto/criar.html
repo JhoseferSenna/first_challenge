@@ -37,6 +37,7 @@
                 <!-- Component Preview-->
                 <div class="sbp-preview">
                   <div class="sbp-preview-content">
+                    <div id='resposta'></div>
                     <form id="frm-cadastro-produto" enctype="multipart/form-data">
                       <div class="resposta"></div>
                       <div class="row">
@@ -61,8 +62,8 @@
                         <div class="form-group col-sm-3">
                           <label for="">Status</label>
                           <select class="form-control" id="status-produto">
-                            <option value="1">Eletronico</option>
-                            <option value="2">Limpeza</option>
+                            <option value="1">Ativo</option>
+                            <option value="2">Inativo</option>
                           </select>
                         </div>
                       </div>
@@ -74,7 +75,7 @@
                       </div>
                       <button type="button" class="btn btn-success" id="btn-cadastrar-produto">Cadastrar</button>
                     </form>
-                    <div id='preview'></div>
+
                   </div>
                 </div>
               </div>
@@ -87,7 +88,7 @@
 
   <script src="src/js/jquery.js"></script>
   <script src="src/js/bootstrap.min.js"></script>
-
+  <script src="src/js/sucesso_erro.js"></script>
   <script>
 
 
@@ -116,11 +117,15 @@
         contentType: false,
         processData: false,
         success: function (response) {
+          console.log(response)
 
-          var src = response[index];
+          if (response.resposta == "sucesso") {
+            sucesso('#resposta', 'Produto Registrado Com sucesso')
+            $('#frm-cadastro-produto')[0].reset();
+          } else {
+            erro('#resposta', 'Erro ao Registrar o Produto')
+          }
 
-          // Add img element in <div id='preview'>
-          $('#preview').append('<img src="' + src + '" width="200px;" height="200px">');
         }
 
       })
