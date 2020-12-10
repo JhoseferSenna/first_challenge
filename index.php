@@ -13,7 +13,7 @@ function criarProduto()
 
 function listarProduto()
 {
-    die('Page not found. Please try some different url.');
+    include("View/produto/listar.html");
 }
 
 function carregarProduto()
@@ -50,9 +50,12 @@ if ($request == 'home' or $request == '')
 //If url is http://localhost/route/about-us
 else if ($request == 'criar-produto')
     criarProduto();
+else if ($request == 'listar-produto')
+    listarProduto();
 //If url is http://localhost/route/contact-us
 else if ($request == 'criar-categoria')
     criarCategoria();
+
 //If user entered something else
 else
     page404();
