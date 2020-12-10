@@ -9,6 +9,19 @@
 
 <body>
   <h1>Olá</h1>
+
+
+  <script>
+    $.post('Controller/ProdutoController.php', {
+      acao: registra
+    }, function(retorno) {
+      console.log(retorno)
+
+      if (retorno.resposta == true) {
+        mostraMensagemSucesso()
+      }
+    })
+  </script>
 </body>
 
 </html>
