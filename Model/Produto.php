@@ -90,6 +90,16 @@ class Produto
 
   public function Read()
   {
+    try {
+      include('../Database.php');
+      $queryRead = "SELECT * FROM product";
+      $stmtRead = $conn->prepare($queryRead);
+      $stmtRead->execute();
+      $dados = $stmtRead->fetchAll(PDO::FETCH_ASSOC);
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
   }
 
   public function Update()
