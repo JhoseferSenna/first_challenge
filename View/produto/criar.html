@@ -69,7 +69,7 @@
                       <div class="row">
                         <div class="form-group col-sm-12">
                           <label for="">Selecione uma imagem:</label>
-                          <input class="form-control" name="files" id="files" type="file" multiple />
+                          <input class="form-control" name="imagem-produto" id="imagem-produto" type="file" />
                         </div>
                       </div>
                       <button type="button" class="btn btn-success" id="btn-cadastrar-produto">Cadastrar</button>
@@ -96,18 +96,17 @@
       var precoProduo = $("#preco-produto").val();
       var categoriaProduto = $("#categoria-produto").val();
       var statusProduto = $("#status-produto").val();
+      var imagemProduto = $('#imagem-produto')[0].files[0];
       var dados_produto = new FormData();
 
       dados_produto.append("nome", nomeProduto)
       dados_produto.append("preco", precoProduo)
       dados_produto.append("categoria", categoriaProduto)
       dados_produto.append("status", statusProduto)
+      dados_produto.append("imagem", imagemProduto)
 
-      // Read selected files
-      var totalfiles = document.getElementById('files').files.length;
-      for (var index = 0; index < totalfiles; index++) {
-        dados_produto.append("files[]", document.getElementById('files').files[index]);
-      }
+      dados_produto.append("acao", "cadastrar-produto")
+
 
       $.ajax({
         url: 'Controller/ProdutoController.php',
@@ -118,21 +117,14 @@
         processData: false,
         success: function (response) {
 
-          for (var index = 0; index < response.length; index++) {
-            var src = response[index];
+          var src = response[index];
 
-            // Add img element in <div id='preview'>
-            $('#preview').append('<img src="' + src + '" width="200px;" height="200px">');
-          }
-
+          // Add img element in <div id='preview'>
+          $('#preview').append('<img src="' + src + '" width="200px;" height="200px">');
         }
-      });
 
-
-
-
-
-    })
+      })
+    });
 
 
 
