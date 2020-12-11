@@ -57,6 +57,20 @@ private $color;
         }
     }
 
+    public function Read()
+    {
+        try {
+            include('../Database.php');
+            $queryRead = "SELECT * FROM category";
+            $stmtRead = $conn->prepare($queryRead);
+            $stmtRead->execute();
+            $dados = $stmtRead->fetchAll(PDO::FETCH_ASSOC);
+            return $dados;
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
+
 
 }
 
