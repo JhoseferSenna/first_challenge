@@ -18,7 +18,7 @@ function listarProduto()
 
 function criarCategoria()
 {
-    echo 'This is contact us page. Contact Us template in HTML.';
+    include("View/categoria/criar.html");
 }
 
 function page404()
