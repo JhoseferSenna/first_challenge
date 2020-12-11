@@ -27,7 +27,7 @@ switch ($_POST['acao']) {
   case 'carrega-dados-categoria':
     $id = $_POST['id'];
     $categoria->setId($id);
-    $r = $categoria->dadosCategory();
+    $r = $categoria->dadosCategoria();
     break;
   case 'deletar-categoria':
     $id = $_POST['id'];
