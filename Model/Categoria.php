@@ -1,59 +1,68 @@
 <?php
 
-class Categoria{
+class Categoria
+{
 
-private $id;
-private $status;
-private $name;
-private $color;
+    private $id;
+    private $status;
+    private $name;
+    private $color;
 
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($id){
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getColor(){
+    public function getColor()
+    {
         return $this->color;
     }
 
-    public function setColor($color){
+    public function setColor($color)
+    {
         $this->color = $color;
     }
 
     public function Create()
     {
         try {
-        include('../Database.php');
-        $queryCreate = "INSERT INTO category (id, status, name, color) VALUES (?,?,?,?)";
-        $stmtCreate = $conn->prepare($queryCreate);
-        $stmtCreate->bindParam(1, $this->id);
-        $stmtCreate->bindParam(2, $this->status);
-        $stmtCreate->bindParam(3, $this->name);
-        $stmtCreate->bindParam(4, $this->color);
+            include('../Database.php');
+            $queryCreate = "INSERT INTO category (id, status, name, color) VALUES (?,?,?,?)";
+            $stmtCreate = $conn->prepare($queryCreate);
+            $stmtCreate->bindParam(1, $this->id);
+            $stmtCreate->bindParam(2, $this->status);
+            $stmtCreate->bindParam(3, $this->name);
+            $stmtCreate->bindParam(4, $this->color);
 
-        $dados = $stmtCreate->execute();
-        return $dados;
+            $dados = $stmtCreate->execute();
+            return $dados;
         } catch (PDOException $e) {
-        return "Erro: " . $e->getMessage();
+            return "Erro: " . $e->getMessage();
         }
     }
 
@@ -71,9 +80,20 @@ private $color;
         }
     }
 
-
+    public function Update()
+    {
+        try {
+            include('../Database.php');
+            $queryUpdate = "UPDATE category SET status=?, name=?, color=? WHERE id=? ";
+            $stmtUpdate = $conn->prepare($queryUpdate);
+            $stmtUpdate->bindParam(1, $this->status);
+            $stmtUpdate->bindParam(2, $this->name);
+            $stmtUpdate->bindParam(3, $this->color);
+            $stmtUpdate->bindParam(4, $this->id);
+            $dados = $stmtUpdate->execute();
+            return $dados;
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
 }
-
-
-
-?>
