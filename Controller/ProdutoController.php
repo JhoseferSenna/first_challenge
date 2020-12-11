@@ -47,5 +47,13 @@ switch ($_POST['acao']) {
       $r = array("resposta" => "Erro");
     }
     break;
+  case 'listar-produto':
+    $r = $produto->Read();
+    break;
+  case 'carrega-dados-produto':
+    $id = $_POST['id'];
+    $produto->setId($id);
+    $r = $produto->dadosProduto();
+    break;
 }
 echo json_encode($r);

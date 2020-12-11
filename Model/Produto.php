@@ -134,4 +134,19 @@ class Produto
       return "Erro: " . $e->getMessage();
     }
   }
+
+  public function dadosProduto()
+  {
+    try {
+      include('../Database.php');
+      $queryDadosProduto = "SELECT * FROM product WHERE id = ?";
+      $stmtDadosProduto = $conn->prepare($queryDadosProduto);
+      $stmtDadosProduto->bindParam(1, $this->id);
+      $stmtDadosProduto->execute();
+      $dados = $stmtDadosProduto->fetch(PDO::FETCH_ASSOC);
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
+  }
 }
