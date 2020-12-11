@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listar Categorias</title>
+  <link rel="stylesheet" href="src/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    .preview img {
+      margin-top: 10px;
+      max-width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+      <div class="container">
+        <div class="page-header-content pt-4">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-auto mt-4">
+              <h1 class="page-header-title">
+                <div class="page-header-icon"><i data-feather="user-plus"></i></div>
+                Listar Categoria
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Default Bootstrap Form Controls-->
+          <div id="default">
+            <div class="card mb-4">
+              <div class="card-header">Listagem de Categorias</div>
+              <div class="card-body">
+                <!-- Component Preview-->
+                <div class="sbp-preview">
+                  <div class="sbp-preview-content">
+                    <div id='resposta-delete'></div>
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nome</th>
+                          <th>Status</th>
+                          <th>Color</th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody class='lista-categoria'>
+                        <tr>
+                          <td>1</td>
+                          <td>Categoria_01</td>
+                          <td>Ativo</td>
+                          <td>Vermelha</td>
+                          <td>Editar</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td>2</td>
+                          <td>Categoria_02</td>
+                          <td>Inativo</td>
+                          <td>Azul</td>
+                          <td>Editar</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Produto -->
+
+  <div class="modal fade" id="categoria-dados" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="frm-dados-produto" enctype="multipart/form-data">
+            <div class="resposta"></div>
+            <div class="row">
+              <div class="form-group col-sm-3">
+                <label for="">Nome</label>
+                <input class="form-control" id="nome-produto" type="text" placeholder="Nome do Produto" />
+                <input class="form-control" id="id-produto" type="text" hidden />
+              </div>
+
+              <div class="form-group col-sm-3">
+                <label for="">Status</label>
+                <select class="form-control" id="status-produto">
+                  <option value="1">Ativo</option>
+                  <option value="2">Inativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-3">
+                <label for="">Color</label>
+                <select class="form-control" id="categoria-color">
+                  <option value="1">Vermelha</option>
+                  <option value="2">Azul</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <div class="preview"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary btn-salvar-categoria">Salvar Alterações</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+  <script src="src/js/sucesso_erro.js"></script>
+  <script>
+    $(document).ready(function () {
+      listarCategoria()
+
+      /* $(document).on("click", "#btn-modal-categoria", function () {
+        $("#categoria-dados").modal("show");
+        var id = $(this).data("id");
+        carregaDadosCategoria(id)
+      }) */
+
+      /* $(document).on("click", ".btn-salvar-categoria", function (response) {
+        var id = $("#id-produto").val();
+        var nomeProduto = $("#nome-produto").val();
+        var precoProduto = $("#preco-produto").val();
+        var categoriaProduto = $("#categoria-color").val();
+        var statusProduto = $("#status-produto").val();
+        var imagemProduto = $('.preview img').attr('src');
+        $.post("Controller/CategoriaController.php", {
+          acao: 'editar-produto',
+          id: id,
+          nomeProduto: nomeProduto,
+          categoriaProduto: categoriaProduto,
+          statusProduto: statusProduto,
+          precoProduto: precoProduto,
+          imagemProduto: imagemProduto
+        },
+          function (resposta) {
+            console.log(resposta)
+          })
+      }) */
+
+      /* $(document).on("click", "#btn-deletar-categoria", function (response) {
+        var id = $(this).data("id");
+        $.post('Controller/CategoriaController.php', { acao: 'deletar-categoria', id: id }, function (response) {
+          if (response == "true") {
+            console.log('estamos aqui dentro, Beleza!')
+            sucesso("#resposta-delete", "Categoria Excluida com Sucesso!");
+            listarCategoria();
+          }
+        })
+      }); */
+
+    });
+
+
+    function listarCategoria() {
+      alert('Listando as Categorias!')
+      /* $.post("Controller/CategoriaController.php", { acao: 'listar-produto' }, function (response) {
+        var lista = '';
+        var produtos = JSON.parse(response);
+        $.each(produtos, function (index, produto) {
+
+          console.log(produto)
+          lista += '<tr>';
+          lista += '<td>';
+          lista += produto.id
+          lista += '</td>';
+          lista += '<td>';
+          lista += produto.name
+          lista += '</td>';
+          lista += '<td>';
+          lista += produto.price
+          lista += '</td>';
+          lista += '<td>';
+          lista += produto.category_id
+          lista += '</td>';
+          lista += '<td>';
+          lista += produto.status
+          lista += '</td>';
+          lista += '<td>';
+          lista += '<div class="btn-group" role="group" aria-label="Basic example">'
+          lista += '<button type="button" class="btn btn-success mr-2" data-id="' + produto.id + '" id="btn-modal-categoria"><i class="fas fa-edit"></i></button>'
+          lista += '<button type="button" class="btn btn-danger" data-id="' + produto.id + '" id="btn-deletar-categoria"><i class="fas fa-trash"></button>'
+          lista += '</div>'
+          lista += '</td>';
+          lista += '</tr>';
+        });
+        $(".lista-categoria").empty()
+        $(".lista-categoria").append(lista)
+        $('#example').DataTable({
+          responsive: true,
+          pageLength: 5,
+          lengthMenu: [
+            [5, 10, 20, -1],
+            [5, 10, 20, "Todos"]
+          ],
+          language: {
+            sEmptyTable: "Nenhum registro encontrado",
+            sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando 0 até 0 de 0 registros",
+            sInfoFiltered: "(Filtrados de _MAX_ registros)",
+            sInfoPostFix: "",
+            sInfoThousands: ".",
+            sLengthMenu: "_MENU_ resultados por página",
+            sLoadingRecords: "Carregando...",
+            sProcessing: "Processando...",
+            sZeroRecords: "Nenhum registro encontrado",
+            sSearch: "Pesquisar",
+            oPaginate: {
+              sNext: "Próximo",
+              sPrevious: "Anterior",
+              sFirst: "Primeiro",
+              sLast: "Último"
+            },
+            oAria: {
+              sSortAscending: ": Ordenar colunas de forma ascendente",
+              sSortDescending: ": Ordenar colunas de forma descendente"
+            },
+            select: {
+              rows: {
+                _: "Selecionado %d linhas",
+                "0": "Nenhuma linha selecionada",
+                "1": "Selecionado 1 linha"
+              }
+            }
+          },
+          bRetrieve: true
+        });
+
+
+      }); */
+    }
+
+    function carregaDadosCategoria(id) {
+      alert('Carregando Dados das Categorias!')
+      /* $.post("Controller/CategoriaController.php", { acao: "carrega-dados-categoria", id: id }, function (response) {
+        var categoria_dados = JSON.parse(response)
+        var caminho = categoria_dados.image.replace('../', '');
+        $("#id-produto").val(categoria_dados.id);
+        $("#nome-produto").val(categoria_dados.name);
+        $("#preco-produto").val(categoria_dados.price);
+        $("#categoria-color").val(categoria_dados.category_id);
+        $("#status-produto").val(categoria_dados.status);
+        $('.preview').html('<img src="' + caminho + '"/>');
+
+        // $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (resposta) {
+        //   console.log(resposta);
+        // })
+      }) */
+    }
+
+
+  </script>
+</body>
+
+</html>
