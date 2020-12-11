@@ -27,29 +27,33 @@ $ git commit -m "alteração feita"
 ### Suba as suas alterações
 $ git pull origin nomeBranch
 
-# Abra uma PR no github
+### Abra uma PR no Github
+$ git pull origin nomeBranch
 
-### Features
-  ## CRUD - Produtos
+## Iniciando uma outra tarefa, após o Merge
+<p align="center">Basta você realizar um novo git checkout para Develop e um git pull e realize os passos citados novamente</p>
+
+# Features
+  ### CRUD - Produtos
 - [x] Cadastro de produtos
 - [x] Listagem de produtos
 - [x] Edição de produtos
 - [x] Exclusão de produtos
 
-  ## CRUD - Categorias
+  ### CRUD - Categorias
 
 - [x] Cadastro de categorias
 - [x] Listagem de categorias
 - [x] Edição de categorias
 - [x] Exclusão de categorias
 
-  ## View - Produtos
+  ### View - Produtos
 - [x] Cadastro de produtos
 - [x] Listagem de produtos
 - [x] Edição de produtos
 - [x] Exclusão de produtos
 
-  ## View - Categorias
+  ### View - Categorias
 - [ ] Cadastro de categorias
 - [ ] Listagem de categorias
 - [ ] Edição de categorias

@@ -16,21 +16,6 @@ function listarProduto()
     include("View/produto/listar.html");
 }
 
-function carregarProduto()
-{
-    die('Page not found. Please try some different url.');
-}
-
-function editarProduto()
-{
-    die('Page not found. Please try some different url.');
-}
-
-function deletarProduto()
-{
-    die('Page not found. Please try some different url.');
-}
-
 function criarCategoria()
 {
     echo 'This is contact us page. Contact Us template in HTML.';
