@@ -341,6 +341,7 @@
         $.each(produtos, function(index, produto) {
           var caminho = produto.image.replace('../', '');
           var caminho = produto.image.replace('../', '');
+          console.log(caminho);
           if (caminho == '') {
             caminho = 'https://dummyimage.com/600x400/55595c/fff'
           }
