@@ -29,8 +29,11 @@ switch($_POST['acao']){
     $categoria->setId($id);
     $r = $categoria->dadosCategory();
     break;
-    
-   break;
+  case 'deletar-categoria':
+    $id = $_POST['id'];
+    $categoria->setId($id);
+    $r = $categoria->Delete();
+    break;
 }
 
 echo json_encode($r);
