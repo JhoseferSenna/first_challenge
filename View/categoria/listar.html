@@ -59,20 +59,20 @@
                       </thead>
                       <tbody class='lista-categoria'>
                         <tr>
-                          <td>1</td>
-                          <td>Categoria_01</td>
-                          <td>Ativo</td>
-                          <td>Vermelha</td>
-                          <td>Editar</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>
                       </tbody>
                       <tfoot>
                         <tr>
-                          <td>2</td>
-                          <td>Categoria_02</td>
-                          <td>Inativo</td>
-                          <td>Azul</td>
-                          <td>Editar</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>
                       </tfoot>
                     </table>
@@ -145,34 +145,30 @@
     $(document).ready(function () {
       listarCategoria()
 
-      /* $(document).on("click", "#btn-modal-categoria", function () {
+      $(document).on("click", "#btn-modal-categoria", function () {
         $("#categoria-dados").modal("show");
         var id = $(this).data("id");
         carregaDadosCategoria(id)
-      }) */
+      })
 
-      /* $(document).on("click", ".btn-salvar-categoria", function (response) {
-        var id = $("#id-produto").val();
-        var nomeProduto = $("#nome-produto").val();
-        var precoProduto = $("#preco-produto").val();
-        var categoriaProduto = $("#categoria-color").val();
-        var statusProduto = $("#status-produto").val();
-        var imagemProduto = $('.preview img').attr('src');
+      $(document).on("click", ".btn-salvar-categoria", function (response) {
+        var id = $("#id-categoria").val();
+        var nomeCategoria = $("#nome-categoria").val();
+        var statusCategoria = $("#status-categoria").val();
+        var colorCategoria = $("#color-categoria").val();
         $.post("Controller/CategoriaController.php", {
-          acao: 'editar-produto',
+          acao: 'editar-categoria',
           id: id,
-          nomeProduto: nomeProduto,
-          categoriaProduto: categoriaProduto,
-          statusProduto: statusProduto,
-          precoProduto: precoProduto,
-          imagemProduto: imagemProduto
+          nomeCategoria: nomeCategoria,
+          statusCategoria: statusCategoria,
+          colorCategoria: colorCategoria
         },
           function (resposta) {
             console.log(resposta)
           })
-      }) */
+      })
 
-      /* $(document).on("click", "#btn-deletar-categoria", function (response) {
+      $(document).on("click", "#btn-deletar-categoria", function (response) {
         var id = $(this).data("id");
         $.post('Controller/CategoriaController.php', { acao: 'deletar-categoria', id: id }, function (response) {
           if (response == "true") {
@@ -181,39 +177,35 @@
             listarCategoria();
           }
         })
-      }); */
+      });
 
     });
 
 
     function listarCategoria() {
-      alert('Listando as Categorias!')
-      /* $.post("Controller/CategoriaController.php", { acao: 'listar-produto' }, function (response) {
+      $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (response) {
         var lista = '';
-        var produtos = JSON.parse(response);
-        $.each(produtos, function (index, produto) {
+        var categorias = JSON.parse(response);
+        $.each(categorias, function (index, categoria) {
 
-          console.log(produto)
+          console.log(categoria)
           lista += '<tr>';
           lista += '<td>';
-          lista += produto.id
+          lista += categoria.id
           lista += '</td>';
           lista += '<td>';
-          lista += produto.name
+          lista += categoria.name
           lista += '</td>';
           lista += '<td>';
-          lista += produto.price
+          lista += categoria.status
           lista += '</td>';
           lista += '<td>';
-          lista += produto.category_id
-          lista += '</td>';
-          lista += '<td>';
-          lista += produto.status
+          lista += categoria.color
           lista += '</td>';
           lista += '<td>';
           lista += '<div class="btn-group" role="group" aria-label="Basic example">'
-          lista += '<button type="button" class="btn btn-success mr-2" data-id="' + produto.id + '" id="btn-modal-categoria"><i class="fas fa-edit"></i></button>'
-          lista += '<button type="button" class="btn btn-danger" data-id="' + produto.id + '" id="btn-deletar-categoria"><i class="fas fa-trash"></button>'
+          lista += '<button type="button" class="btn btn-success mr-2" data-id="' + categoria.id + '" id="btn-modal-categoria"><i class="fas fa-edit"></i></button>'
+          lista += '<button type="button" class="btn btn-danger" data-id="' + categoria.id + '" id="btn-deletar-categoria"><i class="fas fa-trash"></button>'
           lista += '</div>'
           lista += '</td>';
           lista += '</tr>';
@@ -261,27 +253,22 @@
         });
 
 
-      }); */
+      });
     }
 
     function carregaDadosCategoria(id) {
-      alert('Carregando Dados das Categorias!')
-      /* $.post("Controller/CategoriaController.php", { acao: "carrega-dados-categoria", id: id }, function (response) {
+      $.post("Controller/CategoriaController.php", { acao: "carrega-dados-categoria", id: id }, function (response) {
         var categoria_dados = JSON.parse(response)
-        var caminho = categoria_dados.image.replace('../', '');
-        $("#id-produto").val(categoria_dados.id);
-        $("#nome-produto").val(categoria_dados.name);
-        $("#preco-produto").val(categoria_dados.price);
-        $("#categoria-color").val(categoria_dados.category_id);
-        $("#status-produto").val(categoria_dados.status);
-        $('.preview').html('<img src="' + caminho + '"/>');
+        $("#id-categoria").val(categoria_dados.id);
+        $("#nome-categoria").val(categoria_dados.name);
+        $("#status-categoria").val(categoria_dados.status);
+        $("#color-categoria").val(categoria_dados.color);
 
         // $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (resposta) {
         //   console.log(resposta);
         // })
-      }) */
+      })
     }
-
 
   </script>
 </body>
