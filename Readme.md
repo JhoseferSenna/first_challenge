@@ -1,5 +1,33 @@
 <h1 align="center">Chellange eNe</h1>
-<p align="center">Escrever uma breve descrição</p>
+
+### Configurando o Projeto
+# Clone este repositório
+$ git clone https://github.com/JhoseferSenna/first_challange.git>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd first_challange
+
+### Iniciando uma Task
+# Execute um Git Pull
+$ git pull
+
+# Crie uma Branch Para a sua Task
+$ git branch nomeBranch
+
+# Entre na sua Branch criada para a task
+$ git checkout nomeBranch
+
+### Entregando uma Task
+# Adicione as alterações na Branch
+$ git add .
+
+# Commit as suas alterações
+$ git commit -m "alteração feita"
+
+# Suba as suas alterações
+$ git pull origin nomeBranch
+
+### Abra uma PR no github
 
 ### Features
   ## CRUD - Produtos
@@ -22,8 +50,8 @@
 - [x] Exclusão de produtos
 
   ## View - Categorias
-- [] Cadastro de categorias
-- [] Listagem de categorias
-- [] Edição de categorias
-- [] Exclusão de categorias
+- [ ] Cadastro de categorias
+- [ ] Listagem de categorias
+- [ ] Edição de categorias
+- [ ] Exclusão de categorias
 
