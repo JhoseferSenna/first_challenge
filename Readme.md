@@ -2,7 +2,7 @@
 
 # Configurando o Projeto
 ### Clone este repositório
-$ git clone https://github.com/JhoseferSenna/first_challange.git>
+$ git clone https://github.com/JhoseferSenna/first_challange.git
 
 ### Acesse a pasta do projeto no terminal/cmd
 $ cd first_challange
@@ -34,18 +34,30 @@ $ git pull origin nomeBranch
 <p align="center">Basta você realizar um novo git checkout para Develop e um git pull e realize os passos citados novamente</p>
 
 # Features
-  ### CRUD - Produtos
+  ### MODEL - CRUD - Produtos
 - [x] Cadastro de produtos
 - [x] Listagem de produtos
 - [x] Edição de produtos
 - [x] Exclusão de produtos
 
-  ### CRUD - Categorias
+  ### MODEL - CRUD - Categorias
 
 - [x] Cadastro de categorias
-- [x] Listagem de categorias
-- [x] Edição de categorias
-- [x] Exclusão de categorias
+- [ ] Listagem de categorias
+- [ ] Edição de categorias
+- [ ] Exclusão de categorias
+
+  ### Controller - Produtos
+- [x] Cadastro de produtos
+- [x] Listagem de produtos
+- [x] Edição de produtos
+- [x] Exclusão de produtos
+
+  ### Controller - Categorias
+- [x] Cadastro de categorias
+- [ ] Listagem de categorias
+- [ ] Edição de categorias
+- [ ] Exclusão de categorias
 
   ### View - Produtos
 - [x] Cadastro de produtos
