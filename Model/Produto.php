@@ -125,8 +125,8 @@ class Produto
   {
     try {
       include('../Database.php');
-      $sql = "DELETE FROM product WHERE id = ?";
-      $stmtDelete = $conn->prepare($sql);
+      $queryDelete = "DELETE FROM product WHERE id = ?";
+      $stmtDelete = $conn->prepare($queryDelete);
       $stmtDelete->bindParam(1, $this->id);
       $dados = $stmtDelete->execute();
       return $dados;

@@ -52,6 +52,7 @@
                         <tr>
                           <th>#</th>
                           <th>Nome</th>
+                          <th>Preço</th>
                           <th>Categoria</th>
                           <th>Status</th>
                           <th>Ações</th>
@@ -70,6 +71,7 @@
                         <tr>
                           <th>#</th>
                           <th>Nome</th>
+                          <th>Preço</th>
                           <th>Categoria</th>
                           <th>Status</th>
                           <th>Ações</th>
@@ -104,6 +106,7 @@
               <div class="form-group col-sm-3">
                 <label for="">Nome</label>
                 <input class="form-control" id="nome-produto" type="text" placeholder="Nome do Produto" />
+                <input class="form-control" id="id-produto" type="text" hidden />
               </div>
 
               <div class="form-group col-sm-3">
@@ -132,7 +135,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary btn-salvar-produto">Salvar Alterações</button>
         </div>
       </div>
     </div>
@@ -147,6 +150,50 @@
   <script src="src/js/sucesso_erro.js"></script>
   <script>
     $(document).ready(function () {
+      listarProduto()
+
+      $(document).on("click", "#btn-modal-produto", function () {
+        $("#produto-dados").modal("show");
+        var id = $(this).data("id");
+        carregaDadosProduto(id)
+      })
+
+      $(document).on("click", ".btn-salvar-produto", function (response) {
+        var id = $("#id-produto").val();
+        var nomeProduto = $("#nome-produto").val();
+        var precoProduto = $("#preco-produto").val();
+        var categoriaProduto = $("#categoria-produto").val();
+        var statusProduto = $("#status-produto").val();
+        var imagemProduto = $('.preview img').attr('src');
+        $.post("Controller/ProdutoController.php", {
+          acao: 'editar-produto',
+          id: id,
+          nomeProduto: nomeProduto,
+          categoriaProduto: categoriaProduto,
+          statusProduto: statusProduto,
+          precoProduto: precoProduto,
+          imagemProduto: imagemProduto
+        },
+          function (resposta) {
+            console.log(resposta)
+          })
+      })
+
+      $(document).on("click", "#btn-deletar-produto", function (response) {
+        var id = $(this).data("id");
+        $.post('Controller/ProdutoController.php', { acao: 'deletar-produto', id: id }, function (response) {
+          if (response == "true") {
+            console.log('estamos aqui dentro')
+            sucesso("#resposta-delete", "Produto Excluido Com Sucesso");
+            listarProduto();
+          }
+        })
+      });
+
+    });
+
+
+    function listarProduto() {
       $.post("Controller/ProdutoController.php", { acao: 'listar-produto' }, function (response) {
         var lista = '';
         var produtos = JSON.parse(response);
@@ -161,6 +208,9 @@
           lista += produto.name
           lista += '</td>';
           lista += '<td>';
+          lista += produto.price
+          lista += '</td>';
+          lista += '<td>';
           lista += produto.category_id
           lista += '</td>';
           lista += '<td>';
@@ -169,7 +219,7 @@
           lista += '<td>';
           lista += '<div class="btn-group" role="group" aria-label="Basic example">'
           lista += '<button type="button" class="btn btn-success mr-2" data-id="' + produto.id + '" id="btn-modal-produto"><i class="fas fa-edit"></i></button>'
-          lista += '<button type="button" class="btn btn-danger" data-id="' + produto.id + '" id="btn-deleta-produto"><i class="fas fa-trash"></button>'
+          lista += '<button type="button" class="btn btn-danger" data-id="' + produto.id + '" id="btn-deletar-produto"><i class="fas fa-trash"></button>'
           lista += '</div>'
           lista += '</td>';
           lista += '</tr>';
@@ -218,20 +268,13 @@
 
 
       });
-
-      $(document).on("click", "#btn-modal-produto", function () {
-        $("#produto-dados").modal("show");
-        var id = $(this).data("id");
-        carregaDadosProduto(id)
-      })
-
-    });
+    }
 
     function carregaDadosProduto(id) {
       $.post("Controller/ProdutoController.php", { acao: "carrega-dados-produto", id: id }, function (response) {
-        console.log(response)
         var produto_dados = JSON.parse(response)
         var caminho = produto_dados.image.replace('../', '');
+        $("#id-produto").val(produto_dados.id);
         $("#nome-produto").val(produto_dados.name);
         $("#preco-produto").val(produto_dados.price);
         $("#categoria-produto").val(produto_dados.category_id);
@@ -243,6 +286,8 @@
         // })
       })
     }
+
+
   </script>
 </body>
 

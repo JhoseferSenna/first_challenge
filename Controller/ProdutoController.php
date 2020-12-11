@@ -32,14 +32,14 @@ switch ($_POST['acao']) {
       $location = '';
     }
     $nomeProduto = $_POST['nome'];
-    $precoProtudo = $_POST['preco'];
+    $precoProduto = $_POST['preco'];
     $categoriaProduto = $_POST['categoria'];
     $statusProduto = $_POST['status'];
 
     $produto->setName($nomeProduto);
     $produto->setCategoryId($categoriaProduto);
     $produto->setStatus($statusProduto);
-    $produto->setPrice($precoProtudo);
+    $produto->setPrice($precoProduto);
     $produto->setImage($location);
     if ($produto->create()) {
       $r = array("resposta" => "Sucesso");
@@ -54,6 +54,26 @@ switch ($_POST['acao']) {
     $id = $_POST['id'];
     $produto->setId($id);
     $r = $produto->dadosProduto();
+    break;
+  case 'editar-produto':
+    $id = $_POST['id'];
+    $nomeProduto = $_POST['nomeProduto'];
+    $precoProduto = $_POST['precoProduto'];
+    $categoriaProduto = $_POST['categoriaProduto'];
+    $statusProduto = $_POST['statusProduto'];
+    $imagemProduto = '../' . $_POST['imagemProduto'];
+    $produto->setId($id);
+    $produto->setName($nomeProduto);
+    $produto->setCategoryId($categoriaProduto);
+    $produto->setStatus($statusProduto);
+    $produto->setPrice($precoProduto);
+    $produto->setImage($imagemProduto);
+    $r = $produto->Update();
+    break;
+  case 'deletar-produto':
+    $id = $_POST['id'];
+    $produto->setId($id);
+    $r = $produto->Delete();
     break;
 }
 echo json_encode($r);
