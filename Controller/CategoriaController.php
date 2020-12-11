@@ -7,7 +7,7 @@ if(!empty($_POST['acao'])){
 }
 
 switch($_POST['acao']){
-   case 'criar-categoria':
+  case 'criar-categoria':
     $nomeCategoria = $_POST['nome'];
     $colorCategoria = $_POST['color'];
     $statusCategoria = $_POST['status'];
@@ -16,13 +16,19 @@ switch($_POST['acao']){
     $categoria->setName($nomeCategoria);
     $categoria->setColor($colorCategoria);
 
-    
-    
-    if ($categoria->create()) {
-        $r = array("resposta" => "Sucesso");
-      } else {
-        $r = array("resposta" => "Erro");
-    }
+  if ($categoria->create()) {
+      $r = array("resposta" => "Sucesso");
+    } else {
+      $r = array("resposta" => "Erro");
+  }
+  case 'listar-categoria':
+    $r = $categoria->Read();
+    break;
+  case 'carrega-dados-categoria':
+    $id = $_POST['id'];
+    $categoria->setId($id);
+    $r = $categoria->dadosCategory();
+    break;
     
    break;
 }
