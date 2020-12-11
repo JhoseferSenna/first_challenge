@@ -175,7 +175,6 @@
           imagemProduto: imagemProduto
         },
           function (resposta) {
-            console.log(resposta)
           })
       })
 
@@ -183,7 +182,6 @@
         var id = $(this).data("id");
         $.post('Controller/ProdutoController.php', { acao: 'deletar-produto', id: id }, function (response) {
           if (response == "true") {
-            console.log('estamos aqui dentro')
             sucesso("#resposta-delete", "Produto Excluido Com Sucesso");
             listarProduto();
           }
@@ -198,8 +196,6 @@
         var lista = '';
         var produtos = JSON.parse(response);
         $.each(produtos, function (index, produto) {
-
-          console.log(produto)
           lista += '<tr>';
           lista += '<td>';
           lista += produto.id
@@ -282,7 +278,6 @@
         $('.preview').html('<img src="' + caminho + '"/>');
 
         // $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (resposta) {
-        //   console.log(resposta);
         // })
       })
     }
