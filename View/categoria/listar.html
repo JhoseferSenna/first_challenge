@@ -58,21 +58,15 @@
                         </tr>
                       </thead>
                       <tbody class='lista-categoria'>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+
                       </tbody>
                       <tfoot>
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <th>#</th>
+                          <th>Nome</th>
+                          <th>Status</th>
+                          <th>Color</th>
+                          <th>Ações</th>
                         </tr>
                       </tfoot>
                     </table>
@@ -103,13 +97,13 @@
             <div class="row">
               <div class="form-group col-sm-3">
                 <label for="">Nome</label>
-                <input class="form-control" id="nome-produto" type="text" placeholder="Nome do Produto" />
-                <input class="form-control" id="id-produto" type="text" hidden />
+                <input class="form-control" id="nome-categoria" type="text" placeholder="Nome do Produto" />
+                <input class="form-control" id="id-categoria" type="text" hidden />
               </div>
 
               <div class="form-group col-sm-3">
                 <label for="">Status</label>
-                <select class="form-control" id="status-produto">
+                <select class="form-control" id="status-categoria">
                   <option value="1">Ativo</option>
                   <option value="2">Inativo</option>
                 </select>
@@ -117,7 +111,7 @@
 
               <div class="form-group col-sm-3">
                 <label for="">Color</label>
-                <select class="form-control" id="categoria-color">
+                <select class="form-control" id="cor-categoria">
                   <option value="1">Vermelha</option>
                   <option value="2">Azul</option>
                 </select>
@@ -262,7 +256,7 @@
         $("#id-categoria").val(categoria_dados.id);
         $("#nome-categoria").val(categoria_dados.name);
         $("#status-categoria").val(categoria_dados.status);
-        $("#color-categoria").val(categoria_dados.color);
+        $("#cor-categoria").val(categoria_dados.color);
 
         // $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (resposta) {
         //   console.log(resposta);

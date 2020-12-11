@@ -111,4 +111,19 @@ class Categoria
             return "Erro: " . $e->getMessage();
         }
     }
+
+    public function dadosCategoria()
+    {
+        try {
+            include('../Database.php');
+            $queryRead = "SELECT * FROM category WHERE id = ?";
+            $stmtRead = $conn->prepare($queryRead);
+            $stmtRead->bindParam(1, $this->id);
+            $stmtRead->execute();
+            $dados = $stmtRead->fetch(PDO::FETCH_ASSOC);
+            return $dados;
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
 }
