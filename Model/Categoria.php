@@ -98,4 +98,17 @@ class Categoria
         }
     }
 
+    public function Delete()
+    {
+        try {
+            include('../Database.php');
+            $queryDelete = "DELETE FROM category WHERE id = ?";
+            $stmtDelete = $conn->prepare($queryDelete);
+            $stmtDelete->bindParam(1, $this->id);
+            $dados = $stmtDelete->execute();
+            return $dados;
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
 }
