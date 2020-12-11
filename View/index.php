@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="src/css/bootstrap.min.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <style>
+    .card-img-top {
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
+    }
+
     .bloc_left_price {
       color: #c01508;
       text-align: center;
@@ -164,8 +170,8 @@
         <div class="card bg-light mb-3">
           <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categorias</div>
           <div id="item-wrapper">
-            <ul class="items list-group category_block">
-              <li class="category-1 list-group-item">item 1</li>
+            <ul class="items list-group category_block lista-categoria">
+
               <li class="category-1 list-group-item">item 2</li>
               <li class="category-1 list-group-item">item 3</li>
               <li class="category-1 list-group-item">item 4</li>
@@ -198,109 +204,11 @@
         </div>
       </div>
       <div class="col">
+        <div class="row produto">
+
+
+        </div>
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="row">
-                  <div class="col">
-                    <p class="btn btn-danger btn-block">99.00 $</p>
-                  </div>
-                  <div class="col">
-                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="col-12">
             <nav aria-label="...">
               <ul class="pagination">
@@ -383,6 +291,90 @@
 
   <script src="src/js/bootstrap.min.js"></script>
   <script>
+
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $.post("Controller/IndexController.php", {
+        acao: "listar-categoria"
+      }, function(response) {
+        var categorias = JSON.parse(response);
+        var lista_categoria = ''
+        $.each(categorias, function(index, categoria) {
+
+          lista_categoria += '<li class="' + categoria.id + ' list-group-item">' + categoria.name + '</li>'
+        })
+        $(".lista-categoria").empty();
+        $(".lista-categoria").append(lista_categoria);
+
+        makePages();
+        $("div.ctrl-nav").on('click', 'a', function() {
+          var action = $(this).text();
+          if (action == 'Previous') {
+            current--;
+          } else if (action == 'Next') {
+            current++;
+          } else if (+action > 0) {
+            current = +action;
+          }
+          if (current <= 1) {
+            current = 1;
+          } else if (current >= pages) {
+            current = pages;
+          }
+          showPage(current);
+        });
+        $('div.filter').on('click', 'a', function() {
+          var selector = $(this).attr('href').replace("#", ".");
+          $("ul.items li").show().not(selector).hide();
+          makePages();
+        });
+      })
+
+      var card = ''
+
+      $.post("Controller/IndexController.php", {
+        acao: "listar-produto"
+      }, function(response) {
+        var produtos = JSON.parse(response);
+        $.each(produtos, function(index, produto) {
+          var caminho = produto.image.replace('../', '');
+          var caminho = produto.image.replace('../', '');
+          if (caminho == '') {
+            caminho = 'https://dummyimage.com/600x400/55595c/fff'
+          }
+          console.log(produto.image)
+          card += '<div class="col-12 col-md-6 col-lg-4">'
+          card += '<div class="card ">'
+          card += '<img class="card-img-top" src="' + caminho + '" alt="Card image cap" width="250px;">'
+          card += '<hr class="solid">'
+          card += '<div class="card-body">'
+          card += '<h4 class="card-title"><a href="product.html" title="View Product">' + produto.name + '</a></h4>'
+          card += '<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content. < /p> -->'
+          card += '<div class="row">'
+          card += '<div class="col">'
+          card += '<p class="btn btn-danger btn-block">R$ ' + produto.price + '</p>'
+          card += '</div>'
+          // card += '<div class="col">'
+          // card += '<a href="#" class="btn btn-success btn-block">Add to cart</a>'
+          // card += '</div>'
+          card += '</div>'
+          card += '</div>'
+          card += '</div>'
+          card += '</div>'
+          console.log(produto)
+          $(".produto").empty()
+          $(".produto").append(card)
+        })
+
+
+      })
+    })
+
+
+
+
     $(document).on("click", ".ignorar", function(e) {
       e.preventDefault();
     });
@@ -410,28 +402,6 @@
         $("div.ctrl-nav a:last").hide();
       }
     }
-    makePages();
-    $("div.ctrl-nav").on('click', 'a', function() {
-      var action = $(this).text();
-      if (action == 'Previous') {
-        current--;
-      } else if (action == 'Next') {
-        current++;
-      } else if (+action > 0) {
-        current = +action;
-      }
-      if (current <= 1) {
-        current = 1;
-      } else if (current >= pages) {
-        current = pages;
-      }
-      showPage(current);
-    });
-    $('div.filter').on('click', 'a', function() {
-      var selector = $(this).attr('href').replace("#", ".");
-      $("ul.items li").show().not(selector).hide();
-      makePages();
-    });
   </script>
 </body>
 
