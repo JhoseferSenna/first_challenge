@@ -117,8 +117,6 @@
         contentType: false,
         processData: false,
         success: function (response) {
-          console.log(response)
-
           if (response.resposta == "sucesso") {
             sucesso('#resposta', 'Produto Registrado Com sucesso')
             $('#frm-cadastro-produto')[0].reset();

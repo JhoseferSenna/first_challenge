@@ -341,11 +341,9 @@
         $.each(produtos, function(index, produto) {
           var caminho = produto.image.replace('../', '');
           var caminho = produto.image.replace('../', '');
-          console.log(caminho);
           if (caminho == '') {
             caminho = 'https://dummyimage.com/600x400/55595c/fff'
           }
-          console.log(produto.image)
           card += '<div class="col-12 col-md-6 col-lg-4">'
           card += '<div class="card ">'
           card += '<img class="card-img-top" src="' + caminho + '" alt="Card image cap" width="250px;">'
@@ -364,7 +362,6 @@
           card += '</div>'
           card += '</div>'
           card += '</div>'
-          console.log(produto)
           $(".produto").empty()
           $(".produto").append(card)
         })
