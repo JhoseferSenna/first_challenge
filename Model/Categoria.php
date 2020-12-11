@@ -80,6 +80,7 @@ class Categoria
         }
     }
 
+
     public function Update()
     {
         try {
@@ -96,4 +97,5 @@ class Categoria
             return "Erro: " . $e->getMessage();
         }
     }
+
 }
