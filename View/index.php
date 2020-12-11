@@ -278,7 +278,7 @@
         </div>
         <div class="col-12 copyright mt-3">
           <p class="float-left">
-            <a href="#">Top da Página</a>
+            <a href="#">Topo da Página</a>
           </p>
           <p class="text-right text-muted">Criado com <i class="fa fa-heart"></i> by <a href="#"><i>Unilever Team</i></a> | <span>v. 1.0</span></p>
         </div>
