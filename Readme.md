@@ -66,7 +66,7 @@ $ git pull origin nomeBranch
 - [x] Exclusão de produtos
 
   ### View - Categorias
-- [ ] Cadastro de categorias
+- [x] Cadastro de categorias
 - [ ] Listagem de categorias
 - [ ] Edição de categorias
 - [ ] Exclusão de categorias
