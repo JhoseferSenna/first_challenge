@@ -21,6 +21,11 @@ function criarCategoria()
     include("View/categoria/criar.html");
 }
 
+function listarCategoria()
+{
+    include("View/categoria/listar.html");
+}
+
 function page404()
 {
     echo 'This is contact us page. Contact Us template in HTML.';
@@ -40,6 +45,8 @@ else if ($request == 'listar-produto')
 //If url is http://localhost/route/contact-us
 else if ($request == 'criar-categoria')
     criarCategoria();
+else if ($request == 'listar-categoria')
+    listarCategoria();
 
 //If user entered something else
 else
