@@ -1,33 +1,33 @@
 <h1 align="center">Chellange eNe</h1>
 
-### Configurando o Projeto
-# Clone este repositório
+# Configurando o Projeto
+### Clone este repositório
 $ git clone https://github.com/JhoseferSenna/first_challange.git>
 
-# Acesse a pasta do projeto no terminal/cmd
+### Acesse a pasta do projeto no terminal/cmd
 $ cd first_challange
 
-### Iniciando uma Task
-# Execute um Git Pull
+# Iniciando uma Task
+### Execute um Git Pull
 $ git pull
 
-# Crie uma Branch Para a sua Task
+### Crie uma Branch Para a sua Task
 $ git branch nomeBranch
 
-# Entre na sua Branch criada para a task
+### Entre na sua Branch criada para a task
 $ git checkout nomeBranch
 
-### Entregando uma Task
-# Adicione as alterações na Branch
+# Entregando uma Task
+### Adicione as alterações na Branch
 $ git add .
 
-# Commit as suas alterações
+### Commit as suas alterações
 $ git commit -m "alteração feita"
 
-# Suba as suas alterações
+### Suba as suas alterações
 $ git pull origin nomeBranch
 
-### Abra uma PR no github
+# Abra uma PR no github
 
 ### Features
   ## CRUD - Produtos
