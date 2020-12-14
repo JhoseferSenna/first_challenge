@@ -34,6 +34,22 @@ switch ($_POST['acao']) {
     $categoria->setId($id);
     $r = $categoria->Delete();
     break;
+
+  case 'lista-cor':
+    $r = $categoria->listaCor();
+    break;
+  case 'editar-categoria':
+    $id = $_POST['id'];
+    $nome = $_POST['nomeCategoria'];
+    $status = $_POST['statusCategoria'];
+    $cor = $_POST['colorCategoria'];
+    $categoria->setId($id);
+    $categoria->setName($nome);
+    $categoria->setStatus($status);
+    $categoria->setColor($cor);
+    $r = $categoria->Update();
+
+    break;
 }
 
 echo json_encode($r);
