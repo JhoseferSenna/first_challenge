@@ -55,9 +55,9 @@ $ git pull origin nomeBranch
 
   ### Controller - Categorias
 - [x] Cadastro de categorias
-- [ ] Listagem de categorias
-- [ ] Edição de categorias
-- [ ] Exclusão de categorias
+- [x] Listagem de categorias
+- [x] Edição de categorias
+- [x] Exclusão de categorias
 
   ### View - Produtos
 - [x] Cadastro de produtos
@@ -67,7 +67,7 @@ $ git pull origin nomeBranch
 
   ### View - Categorias
 - [x] Cadastro de categorias
-- [ ] Listagem de categorias
-- [ ] Edição de categorias
-- [ ] Exclusão de categorias
+- [x] Listagem de categorias
+- [x] Edição de categorias
+- [x] Exclusão de categorias
 
