@@ -185,4 +185,18 @@ class Produto
       return "Erro: " . $e->getMessage();
     }
   }
+
+  public function ultimoProduto()
+  {
+    try {
+      include('../Database.php');
+      $queryUltimo = "SELECT * FROM product";
+      $stmtUltimo = $conn->prepare($queryUltimo);
+      $stmtUltimo->execute();
+      $dados = $stmtUltimo->fetch(PDO::FETCH_ASSOC);
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
+  }
 }
