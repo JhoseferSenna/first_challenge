@@ -118,7 +118,7 @@
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">First Challenge</a>
+      <a class="navbar-brand" href="http://localhost/first_challenge/">First Challenge</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -126,7 +126,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
         <ul class="navbar-nav m-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="http://localhost/first_challenge/">Home</a>
           </li>
 
           </li>
@@ -195,38 +195,33 @@
         </div>
         <div class="card bg-light mb-3">
           <div class="card-header bg-success text-white text-uppercase">Último Produto</div>
-          <div class="card-body">
-            <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
-            <h5 class="card-title">Product title</h5>
-            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-            <p class="bloc_left_price">99.00 $</p>
+          <div class="card-body  ultimo-produto">
+
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="row produto">
-
-
+        <div class="row produto mb-5">
         </div>
-        <div class="row">
-          <div class="col-12">
-            <nav aria-label="...">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <!-- <div class="row">
+            <div class="col-12">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div> -->
       </div>
 
     </div>
@@ -338,37 +333,66 @@
         acao: "listar-produto"
       }, function(response) {
         var produtos = JSON.parse(response);
-        $.each(produtos, function(index, produto) {
-          var caminho = produto.image.replace('../', '');
-          var caminho = produto.image.replace('../', '');
-          if (caminho == '') {
-            caminho = 'https://dummyimage.com/600x400/55595c/fff'
-          }
-          card += '<div class="col-12 col-md-6 col-lg-4">'
-          card += '<div class="card ">'
-          card += '<img class="card-img-top" src="' + caminho + '" alt="Card image cap" width="250px;">'
-          card += '<hr class="solid">'
-          card += '<div class="card-body">'
-          card += '<h4 class="card-title"><a href="product.html" title="View Product">' + produto.name + '</a></h4>'
-          card += '<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content. < /p> -->'
-          card += '<div class="row">'
-          card += '<div class="col">'
-          card += '<p class="btn btn-danger btn-block">R$ ' + produto.price + '</p>'
-          card += '</div>'
-          // card += '<div class="col">'
-          // card += '<a href="#" class="btn btn-success btn-block">Add to cart</a>'
-          // card += '</div>'
-          card += '</div>'
-          card += '</div>'
-          card += '</div>'
-          card += '</div>'
-          $(".produto").empty()
-          $(".produto").append(card)
-        })
+        if (produtos.length <= 9) {
+          $.each(produtos, function(index, produto) {
 
+            if (produto.status == 1) {
+              var caminho = produto.image.replace('../', '');
+
+              if (caminho == '') {
+                caminho = 'https://dummyimage.com/600x400/55595c/fff'
+              }
+              card += '<div class="col-12 col-md-6 col-lg-4">'
+              card += '<div class="card ">'
+              card += '<img class="card-img-top" src="' + caminho + '" alt="Card image cap" width="250px;">'
+              card += '<hr class="solid">'
+              card += '<div class="card-body">'
+              card += '<h4 class="card-title"><a href="product.html" title="View Product">' + produto.name + '</a></h4>'
+              card += '<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content. < /p> -->'
+              card += '<div class="row">'
+              card += '<div class="col">'
+              card += '<p class="btn btn-danger btn-block">R$ ' + produto.price + '</p>'
+              card += '</div>'
+              // card += '<div class="col">'
+              // card += '<a href="#" class="btn btn-success btn-block">Add to cart</a>'
+              // card += '</div>'
+              card += '</div>'
+              card += '</div>'
+              card += '</div>'
+              card += '</div>'
+              $(".produto").empty()
+              $(".produto").append(card)
+            }
+
+          })
+        }
 
       })
-    })
+
+
+      var ultimo_produto = ''
+      $.post("Controller/IndexController.php", {
+        acao: "ultimo-produto"
+      }, function(response) {
+        ultimoProduto = JSON.parse(response);
+
+        var caminho = ultimoProduto.image.replace('../', '');
+
+        if (caminho == '') {
+          caminho = 'https://dummyimage.com/600x400/55595c/fff'
+        }
+
+        ultimo_produto += '<img class="img-fluid" src="' + caminho + '" />';
+        ultimo_produto += '<h5 class="card-title">' + ultimoProduto.name + '</h5>';
+        ultimo_produto += '<p class="bloc_left_price">R$ ' + ultimoProduto.price + '</p>';
+        $(".ultimo-produto").empty();
+        $(".ultimo-produto").append(ultimo_produto)
+      })
+
+
+
+    });
+
 
 
 

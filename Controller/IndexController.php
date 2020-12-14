@@ -1,4 +1,5 @@
 <?php
+
 require_once("../Model/Produto.php");
 require_once("../Model/Categoria.php");
 $produto = new Produto();
@@ -13,6 +14,9 @@ switch ($acao) {
 
   case 'listar-categoria':
     $r =  $categoria->Read();
+    break;
+  case 'ultimo-produto':
+    $r =  $produto->ultimoProduto();
     break;
   default:
     # code...
