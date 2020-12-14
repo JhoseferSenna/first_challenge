@@ -112,8 +112,6 @@
               <div class="form-group col-sm-3">
                 <label for="">Color</label>
                 <select class="form-control" id="cor-categoria">
-                  <option value="1">Vermelha</option>
-                  <option value="2">Azul</option>
                 </select>
               </div>
             </div>
@@ -149,7 +147,7 @@
         var id = $("#id-categoria").val();
         var nomeCategoria = $("#nome-categoria").val();
         var statusCategoria = $("#status-categoria").val();
-        var colorCategoria = $("#color-categoria").val();
+        var colorCategoria = $("#cor-categoria").val();
         $.post("Controller/CategoriaController.php", {
           acao: 'editar-categoria',
           id: id,
@@ -158,7 +156,10 @@
           colorCategoria: colorCategoria
         },
           function (resposta) {
-
+            if (resposta == 'true') {
+              sucesso(".resposta", "Categoria Editada com Sucesso");
+              setInterval(function () { location.reload(); }, 2000);
+            }
           })
       })
 
@@ -168,7 +169,7 @@
           if (response == "true") {
 
             sucesso("#resposta-delete", "Categoria Excluida com Sucesso!");
-            listarCategoria();
+            setInterval(function () { location.reload(); }, 2000);
           }
         })
       });
@@ -182,7 +183,6 @@
         var categorias = JSON.parse(response);
         $.each(categorias, function (index, categoria) {
 
-
           lista += '<tr>';
           lista += '<td>';
           lista += categoria.id
@@ -191,7 +191,11 @@
           lista += categoria.name
           lista += '</td>';
           lista += '<td>';
-          lista += categoria.status
+          if (categoria.status == 1) {
+            lista += 'Ativo'
+          } else {
+            lista += 'Inativo'
+          }
           lista += '</td>';
           lista += '<td>';
           lista += categoria.color
@@ -252,15 +256,17 @@
 
     function carregaDadosCategoria(id) {
       $.post("Controller/CategoriaController.php", { acao: "carrega-dados-categoria", id: id }, function (response) {
+        $("#cor-categoria").empty()
         var categoria_dados = JSON.parse(response)
+        $.post("Controller/CategoriaController.php", { acao: "lista-cor" }, function (resposta) {
+          cor = JSON.parse(resposta)
+          $.each(cor, function (index, cor) {
+            $("#cor-categoria").append($("<option></option>").val(cor.color).html(cor.color))
+          })
+        })
         $("#id-categoria").val(categoria_dados.id);
         $("#nome-categoria").val(categoria_dados.name);
         $("#status-categoria").val(categoria_dados.status);
-        $("#cor-categoria").val(categoria_dados.color);
-
-        // $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (resposta) {
-
-        // })
       })
     }
 

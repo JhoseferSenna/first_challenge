@@ -80,6 +80,20 @@ class Categoria
         }
     }
 
+    public function listaCor()
+    {
+        try {
+            include('../Database.php');
+            $queryRead = "SELECT DISTINCT color FROM category";
+            $stmtRead = $conn->prepare($queryRead);
+            $stmtRead->execute();
+            $dados = $stmtRead->fetchAll(PDO::FETCH_ASSOC);
+            return $dados;
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
+
 
     public function Update()
     {
