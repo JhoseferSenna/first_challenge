@@ -54,8 +54,6 @@
                         <div class="form-group col-sm-3">
                           <label for="">Categoria</label>
                           <select class="form-control" id="categoria-produto">
-                            <option value="1">Eletronico</option>
-                            <option value="2">Limpeza</option>
                           </select>
                         </div>
 
@@ -90,6 +88,18 @@
   <script src="src/js/bootstrap.min.js"></script>
   <script src="src/js/sucesso_erro.js"></script>
   <script>
+
+    $(document).ready(function () {
+      $("#categoria-produto").empty()
+      $.post("Controller/CategoriaController.php", { acao: 'listar-categoria' }, function (response) {
+        categorias = JSON.parse(response)
+        $.each(categorias, function (index, categoria) {
+          $("#categoria-produto").append(
+            $("<option></option>").val(categoria.id).html(categoria.name)
+          )
+        })
+      })
+    })
 
 
     $(document).on("click", "#btn-cadastrar-produto", function () {
