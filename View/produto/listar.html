@@ -195,6 +195,7 @@
       $.post("Controller/ProdutoController.php", { acao: 'listar-produto' }, function (response) {
         var lista = '';
         var produtos = JSON.parse(response);
+
         $.each(produtos, function (index, produto) {
           lista += '<tr>';
           lista += '<td>';
@@ -207,10 +208,15 @@
           lista += produto.price
           lista += '</td>';
           lista += '<td>';
-          lista += produto.category_id
+          lista += produto.category_name
           lista += '</td>';
           lista += '<td>';
-          lista += produto.status
+          if (produto.status == 1) {
+            lista += 'Ativo'
+          } else {
+            lista += 'Inativo'
+          }
+
           lista += '</td>';
           lista += '<td>';
           lista += '<div class="btn-group" role="group" aria-label="Basic example">'

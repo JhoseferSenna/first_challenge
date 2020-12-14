@@ -48,7 +48,7 @@ switch ($_POST['acao']) {
     }
     break;
   case 'listar-produto':
-    $r = $produto->Read();
+    $r = $produto->listaProdutos();
     break;
   case 'carrega-dados-produto':
     $id = $_POST['id'];

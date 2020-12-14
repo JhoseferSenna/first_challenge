@@ -102,6 +102,20 @@ class Produto
     }
   }
 
+  public function listaProdutos()
+  {
+    try {
+      include('../Database.php');
+      $queryRead = "SELECT product.name, product.price, product.status, product.id, category.name category_name FROM product, category WHERE product.category_id = category.id ";
+      $stmtRead = $conn->prepare($queryRead);
+      $stmtRead->execute();
+      $dados = $stmtRead->fetchAll(PDO::FETCH_ASSOC);
+      return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
+  }
+
   public function Update()
   {
     try {
@@ -145,6 +159,28 @@ class Produto
       $stmtDadosProduto->execute();
       $dados = $stmtDadosProduto->fetch(PDO::FETCH_ASSOC);
       return $dados;
+    } catch (PDOException $e) {
+      return "Erro: " . $e->getMessage();
+    }
+  }
+
+  public function produtoCategoria()
+  {
+    try {
+      include('../Database.php');
+      $queryProduto = "SELECT * FROM product";
+      $stmtProduto = $conn->prepare($queryProduto);
+      $stmtProduto->execute();
+      $dados = $stmtProduto->fetchAll(PDO::FETCH_ASSOC);
+      $produtos = $dados;
+
+      $queryCategoria = "SELECT * FROM category";
+      $stmtCategoria = $conn->prepare($queryCategoria);
+      $stmtCategoria->execute();
+      $dados = $stmtCategoria->fetchAll(PDO::FETCH_ASSOC);
+      $categorias = $dados;
+
+      return array("produtos" => $produtos, "categorias" => $categorias);
     } catch (PDOException $e) {
       return "Erro: " . $e->getMessage();
     }
