@@ -175,6 +175,12 @@
           imagemProduto: imagemProduto
         },
           function (resposta) {
+
+            if (resposta == 'true') {
+              sucesso(".resposta", "Produto Editado com Sucesso")
+              setInterval(function () { location.reload(); }, 2000);
+
+            }
           })
       })
 
@@ -183,7 +189,7 @@
         $.post('Controller/ProdutoController.php', { acao: 'deletar-produto', id: id }, function (response) {
           if (response == "true") {
             sucesso("#resposta-delete", "Produto Excluido Com Sucesso");
-            listarProduto();
+            setInterval(function () { location.reload(); }, 2000);
           }
         })
       });
@@ -195,7 +201,6 @@
       $.post("Controller/ProdutoController.php", { acao: 'listar-produto' }, function (response) {
         var lista = '';
         var produtos = JSON.parse(response);
-
         $.each(produtos, function (index, produto) {
           lista += '<tr>';
           lista += '<td>';
