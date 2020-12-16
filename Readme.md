@@ -43,8 +43,8 @@ $ git pull origin nomeBranch
   ### MODEL - CRUD - Categorias
 
 - [x] Cadastro de categorias
-- [ ] Listagem de categorias
-- [ ] Edição de categorias
+- [x] Listagem de categorias
+- [x] Edição de categorias
 - [X] Exclusão de categorias
 
   ### Controller - Produtos
