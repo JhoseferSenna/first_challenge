@@ -33,6 +33,21 @@ $ git pull origin nomeBranch
 ## Iniciando uma outra tarefa, após o Merge
 <p align="center">Basta você realizar um novo git checkout para Develop e um git pull e realize os passos citados novamente</p>
 
+# Rotas
+
+## Criar Produto
+  ### /criar-produto
+
+## Listar Produto
+  ### /listar-produto
+  
+## Criar Categoria
+  ### /criar-categoria
+  
+## Listar Categoria
+  ### /listar-categoria
+  
+  
 # Features
   ### MODEL - CRUD - Produtos
 - [x] Cadastro de produtos
